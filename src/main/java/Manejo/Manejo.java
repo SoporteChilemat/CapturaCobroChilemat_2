@@ -1,4 +1,3 @@
-
 package Manejo;
 
 import java.awt.Desktop;
@@ -26,7 +25,7 @@ public class Manejo {
             File fichero2 = new File(nombre2);
             boolean success = fichero.renameTo(fichero2);
             if (!success) {
-                System.out.println("Error intentando cambiar el nombre de fichero");
+//                System.out.println("Error intentando cambiar el nombre de fichero");
                 //fichero.delete();
             }
         }
@@ -51,7 +50,7 @@ public class Manejo {
         };
         Files.copy(FROM, TO, options);
         //File file = new File(directorioActual() + "\\" + nombre + ".jpg");
-        System.out.println(directorioActual() + "\\" + nombre + ".jpg");
+//        System.out.println(directorioActual() + "\\" + nombre + ".jpg");
         //file.delete();
     }
 

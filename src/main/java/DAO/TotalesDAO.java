@@ -31,32 +31,31 @@ public class TotalesDAO {
 
     public static void registraTotales(Totales totales, String bd) throws IOException, SQLException {
         DbConnection conex = new DbConnection(bd);
-        try {
-            Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO ingresos.totales (fechas, selected, comentario) VALUES ('"
-                    + totales.getFechas() + "', '"
-                    + totales.getSelected() + "', '"
-                    + totales.getComentario() + "')"
-            );
-            estatuto.close();
-            conex.desconectar();
-        } catch (Exception ex) {
 
-        }
+        Statement estatuto = conex.getConnection().createStatement();
+        estatuto.executeUpdate("INSERT INTO ingresos.totales (fechas, selected, comentario) VALUES ('"
+                + totales.getFechas() + "', '"
+                + totales.getSelected() + "', '"
+                + totales.getComentario() + "')"
+        );
+        estatuto.close();
+        conex.desconectar();
     }
 
     public static void actualizaSelected(Totales totales, String bd) throws IOException, SQLException {
         DbConnection conex = new DbConnection(bd);
         String fechas = totales.getFechas();
         int selected = totales.getSelected();
-        System.out.println("fechas " + fechas + " selected " + selected);
+//        System.out.println("fechas " + fechas + " selected " + selected);
 
         try ( Statement estatuto = conex.getConnection().createStatement()) {
-            estatuto.executeUpdate("UPDATE ingresos.totales SET selected = '"
-                    + totales.getSelected() + "' WHERE fechas = '"
+            estatuto.executeUpdate("UPDATE ingresos.totales SET selected = "
+                    + totales.getSelected() + " WHERE fechas = '"
                     + totales.getFechas().trim() + "'");
             JOptionPane.showMessageDialog(null, "Se ha actualizado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             conex.desconectar();
+        } catch (Exception ex) {
+            System.out.println("ex " + ex);
         }
     }
 
@@ -64,7 +63,7 @@ public class TotalesDAO {
         DbConnection conex = new DbConnection(bd);
         String fechas = totales.getFechas();
         String comentario = totales.getComentario();
-        System.out.println("fechas " + fechas + " comentario " + comentario);
+//        System.out.println("fechas " + fechas + " comentario " + comentario);
 
         try ( Statement estatuto = conex.getConnection().createStatement()) {
             estatuto.executeUpdate("UPDATE ingresos.totales SET comentario = '"

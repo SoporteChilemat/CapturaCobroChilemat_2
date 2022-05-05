@@ -25,8 +25,8 @@ public class Logica {
         File file = new File("C:\\Users\\sopor\\Desktop\\ChilematNew.xlsx");
 //        File file = new File("C:\\Users\\sopor\\Desktop\\COMERCIAL FRANCISCO TOSO LTDA. 06 04 21.xlsx");
         ArrayList<DocumentoCobranza> documentoCobranza = leerExcel(file);
-        System.out.println("");
-        System.out.println(documentoCobranza.size());
+//        System.out.println("");
+//        System.out.println(documentoCobranza.size());
 
         ArrayList<Integer> index = new ArrayList<>();
         AtomicInteger atomicInteger = new AtomicInteger(0);
@@ -55,23 +55,23 @@ public class Logica {
             if (numero == 0) {
                 index.add(valueOf);
             } else {
-                System.out.println("------------------  " + valueOf + "   ------------------");
-                System.out.println("numero " + numero);
-                System.out.println("tipo " + tipo);
-                System.out.println("cuota " + cuota);
-                System.out.println("sucursal " + sucursal);
-                System.out.println("proveedor " + proveedor);
-                System.out.println("fechaEmision " + fechaEmision);
-                System.out.println("fechaVencimiento " + fechaVencimiento);
-                System.out.println("montoCuota " + montoCuota);
-                System.out.println("saldo " + saldo);
-                System.out.println("dias " + dias);
-                System.out.println("numeroOrden " + numeroOrden);
-                System.out.println("guiaChilemat " + guiaChilemat);
-                System.out.println("guiaProveedor " + guiaProveedor);
-                System.out.println("numeroCuota " + numeroCuota);
-                System.out.println("pkNumeroCuota " + pkNumeroCuota);
-                System.out.println("----------------------------------------------");
+//                System.out.println("------------------  " + valueOf + "   ------------------");
+//                System.out.println("numero " + numero);
+//                System.out.println("tipo " + tipo);
+//                System.out.println("cuota " + cuota);
+//                System.out.println("sucursal " + sucursal);
+//                System.out.println("proveedor " + proveedor);
+//                System.out.println("fechaEmision " + fechaEmision);
+//                System.out.println("fechaVencimiento " + fechaVencimiento);
+//                System.out.println("montoCuota " + montoCuota);
+//                System.out.println("saldo " + saldo);
+//                System.out.println("dias " + dias);
+//                System.out.println("numeroOrden " + numeroOrden);
+//                System.out.println("guiaChilemat " + guiaChilemat);
+//                System.out.println("guiaProveedor " + guiaProveedor);
+//                System.out.println("numeroCuota " + numeroCuota);
+//                System.out.println("pkNumeroCuota " + pkNumeroCuota);
+//                System.out.println("----------------------------------------------");
             }
         });
 
@@ -89,7 +89,7 @@ public class Logica {
             }
         });
 
-        System.out.println("leerExcel.size() " + documentoCobranza.size());
+//        System.out.println("leerExcel.size() " + documentoCobranza.size());
     }
 
     public static ArrayList<DocumentoCobranza> leerExcel(File file) throws FileNotFoundException, IOException {
@@ -126,39 +126,39 @@ public class Logica {
                     if (cel.getCachedFormulaResultType() == CellType.NUMERIC) {
                         //cell.getNumericCellValue();
                         cel.getNumericCellValue();
-                        System.out.println(cel.getNumericCellValue());
+//                        System.out.println(cel.getNumericCellValue());
                     } else if (cel.getCachedFormulaResultType() == CellType.STRING) {
                         //cell.getStringCellValue();
                         cel.getStringCellValue();
-                        System.out.println(cel.getStringCellValue());
+//                        System.out.println(cel.getStringCellValue());
                     }
                 } else {
                     try {
                         //cell.getStringCellValue();
                         cel.getStringCellValue();
-                        System.out.println(cel.getStringCellValue());
+//                        System.out.println(cel.getStringCellValue());
                     } catch (Exception e) {
                         //cell.getNumericCellValue();
                         cel.getNumericCellValue();
-                        System.out.println(cel.getNumericCellValue());
+//                        System.out.println(cel.getNumericCellValue());
                     }
                 }
                 cont++;
             }
-            System.out.println("cont " + cont);
+//            System.out.println("cont " + cont);
 
             if (cont == 14) {
                 Iterator rows1 = sheet1.rowIterator();
                 int i = 0;
                 while (rows1.hasNext()) {
-//            System.out.println("i " + i);
+////            System.out.println("i " + i);
                     if (i >= 10) {
                         DocumentoCobranza ingreso = new DocumentoCobranza();
                         row2 = (Row) rows1.next();
                         Iterator cells = row2.cellIterator();
                         cont = 0;
                         while (cells.hasNext()) {
-                            System.out.println(cont);
+//                            System.out.println(cont);
                             cel = (Cell) cells.next();
                             switch (cont) {
                                 case 0:
@@ -173,10 +173,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setNumero(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setNumero(valueOf);
                                         }
@@ -194,10 +194,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setTipo(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setTipo(String.valueOf(valueOf).trim());
                                         }
@@ -215,10 +215,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setCuota(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setCuota(valueOf);
                                         }
@@ -236,10 +236,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setSucursal(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setSucursal(String.valueOf(valueOf).trim());
                                         }
@@ -257,10 +257,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setProveedor(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setProveedor(String.valueOf(valueOf).trim());
                                         }
@@ -278,10 +278,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setFechaEmision(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setFechaEmision(String.valueOf(valueOf).trim());
                                         }
@@ -299,10 +299,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setFechaVencimiento(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setFechaVencimiento(String.valueOf(valueOf).trim());
                                         }
@@ -320,10 +320,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setMontoCuota(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setMontoCuota(valueOf);
                                         }
@@ -341,10 +341,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setSaldo(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setSaldo(valueOf);
                                         }
@@ -362,10 +362,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setDias(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setDias(valueOf);
                                         }
@@ -383,10 +383,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setNumeroOrden(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setNumeroOrden(valueOf);
                                         }
@@ -405,10 +405,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setGuiaChilemat(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             ingreso.setGuiaChilemat(cel.getStringCellValue());
                                         }
                                     }
@@ -429,10 +429,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setGuiaProveedor(String.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             String valueOf = String.valueOf(cel.getNumericCellValue());
                                             ingreso.setGuiaProveedor(valueOf);
                                         }
@@ -453,10 +453,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setNumeroCuota(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setNumeroCuota(valueOf);
                                         }
@@ -474,10 +474,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setPkNumeroCuota(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setPkNumeroCuota(String.valueOf(valueOf));
                                         }
@@ -491,21 +491,21 @@ public class Logica {
                         row2 = (Row) rows1.next();
                     }
                     i++;
-                    System.out.println("i-----------> " + i);
+//                    System.out.println("i-----------> " + i);
                 }
             } else {
                 Iterator rows1 = sheet1.rowIterator();
 
                 int i = 0;
                 while (rows1.hasNext()) {
-//            System.out.println("i " + i);
+////            System.out.println("i " + i);
                     if (i >= 10) {
                         DocumentoCobranza ingreso = new DocumentoCobranza();
                         row2 = (Row) rows1.next();
                         Iterator cells = row2.cellIterator();
                         cont = 0;
                         while (cells.hasNext()) {
-                            System.out.println(cont);
+//                            System.out.println(cont);
                             cel = (Cell) cells.next();
                             switch (cont) {
                                 case 0:
@@ -520,10 +520,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setNumero(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setNumero(valueOf);
                                         }
@@ -541,10 +541,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setTipo(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setTipo(String.valueOf(valueOf).trim());
                                         }
@@ -562,10 +562,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setCuota(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setCuota(valueOf);
                                         }
@@ -583,10 +583,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setSucursal(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setSucursal(String.valueOf(valueOf).trim());
                                         }
@@ -604,10 +604,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setProveedor(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setProveedor(String.valueOf(valueOf).trim());
                                         }
@@ -625,10 +625,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setFechaEmision(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setFechaEmision(String.valueOf(valueOf).trim());
                                         }
@@ -646,10 +646,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setFechaVencimiento(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setFechaVencimiento(String.valueOf(valueOf).trim());
                                         }
@@ -667,10 +667,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setMontoCuota(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setMontoCuota(valueOf);
                                         }
@@ -688,10 +688,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setSaldo(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setSaldo(valueOf);
                                         }
@@ -709,10 +709,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setNumeroOrden(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setNumeroOrden(valueOf);
                                         }
@@ -731,10 +731,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setGuiaChilemat(String.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             String valueOf = String.valueOf(cel.getNumericCellValue());
                                             ingreso.setGuiaChilemat(valueOf);
                                         }
@@ -756,10 +756,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setGuiaProveedor(String.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             String valueOf = String.valueOf(cel.getNumericCellValue());
                                             ingreso.setGuiaProveedor(valueOf);
                                         }
@@ -780,10 +780,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setNumeroCuota(Integer.valueOf(cel.getStringCellValue()));
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setNumeroCuota(valueOf);
                                         }
@@ -801,10 +801,10 @@ public class Logica {
                                     } else {
                                         try {
                                             //cell.getStringCellValue();
-                                            System.out.println(cel.getStringCellValue());
+//                                            System.out.println(cel.getStringCellValue());
                                             ingreso.setPkNumeroCuota(cel.getStringCellValue());
                                         } catch (Exception e) {
-                                            System.out.println(cel.getNumericCellValue());
+//                                            System.out.println(cel.getNumericCellValue());
                                             Integer valueOf = (int) cel.getNumericCellValue();
                                             ingreso.setPkNumeroCuota(String.valueOf(valueOf));
                                         }
@@ -818,7 +818,7 @@ public class Logica {
                         row2 = (Row) rows1.next();
                     }
                     i++;
-                    System.out.println("i-----------> " + i);
+//                    System.out.println("i-----------> " + i);
                 }
             }
             return arrIngreso;

@@ -45,6 +45,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Desktop;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -60,6 +61,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -135,6 +137,7 @@ public class NewJFrame extends javax.swing.JFrame {
     public static ArrayList<String> arrValoresRestaSuma3 = new ArrayList<>();
     public static ArrayList<String> arrValoresRestaSuma4 = new ArrayList<>();
     public static int sumaTiempos = 0;
+    public static String data = "";
 
     public NewJFrame() {
         initComponents();
@@ -166,6 +169,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jComboBox3 = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -190,6 +194,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
@@ -337,7 +342,18 @@ public class NewJFrame extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 211, Short.MAX_VALUE)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 986, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -351,17 +367,22 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
-                        .addGap(0, 986, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -509,7 +530,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -572,6 +593,14 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem1);
 
+        jMenuItem3.setText("Exportar Todo");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
         jMenuItem2.setText("Cargar Archivo");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -607,7 +636,7 @@ public class NewJFrame extends javax.swing.JFrame {
     public static void compruebaVersion() {
         Thread thread = new Thread(() -> {
             while (opcion) {
-                String data = "";
+                data = "";
                 Wini ini = null;
                 FileInputStream inputStream = null;
                 try {
@@ -630,11 +659,8 @@ public class NewJFrame extends javax.swing.JFrame {
 //                    Logger.getLogger(Calendar.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                System.out.println(ConsultaVersion);
-
-                for (int j = 0; j < ConsultaVersion.size(); j++) {
-                    String get = ConsultaVersion.get(j);
-
+//                System.out.println(ConsultaVersion);
+                ConsultaVersion.stream().forEach((String get) -> {
                     if (Integer.valueOf(data) < Integer.valueOf(get)) {
                         v = get;
                         jPanel19.setVisible(true);
@@ -642,7 +668,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         v = "";
                         jPanel19.setVisible(false);
                     }
-                }
+                });
 
                 try {
                     Thread.sleep(1000);
@@ -675,11 +701,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 jPanel4.setVisible(false);
                 try {
                     int size = arrCruzeOK.size();
-                    System.out.println(size);
+//                    System.out.println(size);
                     int size1 = arrCruzeBAD.size();
-                    System.out.println(size1);
+//                    System.out.println(size1);
                     int size2 = arrCruzeMuyMALA.size();
-                    System.out.println(size2);
+//                    System.out.println(size2);
 
                     filterheader = new TableFilterHeader(jTable1, AutoChoices.ENABLED);
                     filterheader1 = new TableFilterHeader(jTable2, AutoChoices.ENABLED);
@@ -751,7 +777,7 @@ public class NewJFrame extends javax.swing.JFrame {
         arrProveedores.clear();
         arrProveedores.addAll(hashSet);
 
-        System.out.println(arrProveedores);
+//        System.out.println(arrProveedores);
         jComboBox3.removeAllItems();
 
         Collections.sort(arrProveedores);
@@ -816,8 +842,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         }
 
-        System.out.println("canFindAllFridaysInRange1 " + canFindAllFridaysInRange1);
-
+//        System.out.println("canFindAllFridaysInRange1 " + canFindAllFridaysInRange1);
         if (!canFindAllFridaysInRange1.isEmpty()) {
             for (int i = 0; i < canFindAllFridaysInRange1.size(); i++) {
                 boolean bool = false;
@@ -835,7 +860,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     Integer valueOf1 = Integer.valueOf(split1[2] + "" + split1[1] + "" + split1[0]);
 
                     if (valueOf1 > valueOf) {
-                        System.out.println("valueOf " + valueOf + " valueOf1 " + valueOf1);
+//                        System.out.println("valueOf " + valueOf + " valueOf1 " + valueOf1);
                         canFindAllFridaysInRange.add(j, get);
                         bool = true;
                         break;
@@ -848,8 +873,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         }
 
-        System.out.println("canFindAllFridaysInRange2 " + canFindAllFridaysInRange2);
-
+//        System.out.println("canFindAllFridaysInRange2 " + canFindAllFridaysInRange2);
         if (!canFindAllFridaysInRange2.isEmpty()) {
             for (int i = 0; i < canFindAllFridaysInRange2.size(); i++) {
                 boolean bool = false;
@@ -867,7 +891,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     Integer valueOf1 = Integer.valueOf(split1[2] + "" + split1[1] + "" + split1[0]);
 
                     if (valueOf1 > valueOf) {
-                        System.out.println("valueOf " + valueOf + " valueOf1 " + valueOf1);
+//                        System.out.println("valueOf " + valueOf + " valueOf1 " + valueOf1);
                         canFindAllFridaysInRange.add(j, get);
                         bool = true;
                         break;
@@ -881,8 +905,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         }
 
-        System.out.println("canFindAllFridaysInRange2 " + canFindAllFridaysInRange2);
-
+//        System.out.println("canFindAllFridaysInRange2 " + canFindAllFridaysInRange2);
         if (!canFindAllFridaysInRange3.isEmpty()) {
             for (int i = 0; i < canFindAllFridaysInRange3.size(); i++) {
                 boolean bool = false;
@@ -900,7 +923,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     Integer valueOf1 = Integer.valueOf(split1[2] + "" + split1[1] + "" + split1[0]);
 
                     if (valueOf1 > valueOf) {
-                        System.out.println("valueOf " + valueOf + " valueOf1 " + valueOf1);
+//                        System.out.println("valueOf " + valueOf + " valueOf1 " + valueOf1);
                         canFindAllFridaysInRange.add(j, get);
                         bool = true;
                         break;
@@ -913,9 +936,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 bool = false;
             }
         }
-        System.out.println("canFindAllFridaysInRange3 " + canFindAllFridaysInRange3);
+//        System.out.println("canFindAllFridaysInRange3 " + canFindAllFridaysInRange3);
 
-        System.out.println(canFindAllFridaysInRange);
+//        System.out.println(canFindAllFridaysInRange);
         DefaultTableModel model = new DefaultTableModel();
 
         model.addColumn("Fecha");
@@ -930,16 +953,16 @@ public class NewJFrame extends javax.swing.JFrame {
         Object[] fila = new Object[8];
 
         int size1 = canFindAllFridaysInRange.size();
-        System.out.println("size1 " + size1);
+//        System.out.println("size1 " + size1);
 
         for (int i = 0; i < canFindAllFridaysInRange.size(); i++) {
             ArrayList<String> get = canFindAllFridaysInRange.get(i);
             String get1 = get.get(0);
-            System.out.println("get1 " + get1);
+//            System.out.println("get1 " + get1);
 
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(get1);
             String get2 = get.get(1);
-            System.out.println("get2 " + get2);
+//            System.out.println("get2 " + get2);
 
             Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(get2);
 
@@ -949,7 +972,7 @@ public class NewJFrame extends javax.swing.JFrame {
             filter(date1, date2, jTable5);
 
             String[] valores = suma();
-            System.out.println("suma " + valores[3]);
+//            System.out.println("suma " + valores[3]);
 
             fila[0] = "Sabado: " + get1 + " Viernes: " + get2;
             fila[1] = valores[0];
@@ -959,7 +982,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[5] = valores[4];
 
             ArrayList<Totales> consultaTotales = TotalesDAO.consultaTotales("ingresos");
-            System.out.println("consultaTotales.size() " + consultaTotales.size());
+//            System.out.println("consultaTotales.size() " + consultaTotales.size());
 
             boolean bool = false;
             int num = 999999999;
@@ -971,9 +994,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 int selected = total.getSelected();
                 String comentario1 = total.getComentario();
 
-                System.out.println("fechas " + fechas);
-                System.out.println("fechas " + "Sabado: " + get1 + " Viernes: " + get2);
-
+//                System.out.println("fechas " + fechas);
+//                System.out.println("fechas " + "Sabado: " + get1 + " Viernes: " + get2);
                 if (fechas.equals("Sabado: " + get1 + " Viernes: " + get2)) {
                     num = selected;
                     bool = true;
@@ -1095,21 +1117,21 @@ public class NewJFrame extends javax.swing.JFrame {
             String valor = jTable1.getValueAt(i, 10).toString();
             String resta = jTable1.getValueAt(i, 11).toString();
             valor = valor.replace(".", "").trim();
-//            System.out.println("valor " + valor);
+////            System.out.println("valor " + valor);
             double numero = Double.parseDouble(valor);
             double numeroResta = Double.parseDouble(resta);
             suma = numero + suma - numeroResta;
         }
 
         BigDecimal bd = new BigDecimal(suma);
-//        System.out.println("suma " + bd);
+////        System.out.println("suma " + bd);
         sumaTotal = suma + sumaTotal;
 
         suma = 0;
 
         DecimalFormat formato = new DecimalFormat("#,###");
         String valorFormateado = formato.format(bd);
-//        System.out.println(valorFormateado);
+////        System.out.println(valorFormateado);
 
         String valor1 = valorFormateado;
 
@@ -1119,21 +1141,21 @@ public class NewJFrame extends javax.swing.JFrame {
             String valor = jTable2.getValueAt(i, 10).toString();
             String resta = jTable2.getValueAt(i, 11).toString();
             valor = valor.replace(".", "").trim();
-//            System.out.println("valor " + valor);
+////            System.out.println("valor " + valor);
             double numero = Double.parseDouble(valor);
             double numeroResta = Double.parseDouble(resta);
             suma = numero + suma - numeroResta;
         }
 
         bd = new BigDecimal(suma);
-//        System.out.println("suma " + bd);
+////        System.out.println("suma " + bd);
         sumaTotal = suma + sumaTotal;
 
         suma = 0;
 
         formato = new DecimalFormat("#,###");
         valorFormateado = formato.format(bd);
-//        System.out.println(valorFormateado);
+////        System.out.println(valorFormateado);
 
         String valor2 = valorFormateado;
 
@@ -1143,21 +1165,21 @@ public class NewJFrame extends javax.swing.JFrame {
             String valor = jTable3.getValueAt(i, 10).toString();
             String resta = jTable3.getValueAt(i, 11).toString();
             valor = valor.replace(".", "").trim();
-//            System.out.println("valor " + valor);
+////            System.out.println("valor " + valor);
             double numero = Double.parseDouble(valor);
             double numeroResta = Double.parseDouble(resta);
             suma = numero + suma - numeroResta;
         }
 
         bd = new BigDecimal(suma);
-//        System.out.println("suma " + bd);
+////        System.out.println("suma " + bd);
         sumaTotal = suma + sumaTotal;
 
         suma = 0;
 
         formato = new DecimalFormat("#,###");
         valorFormateado = formato.format(bd);
-//        System.out.println(valorFormateado);
+////        System.out.println(valorFormateado);
 
         String valor3 = valorFormateado;
 
@@ -1167,19 +1189,19 @@ public class NewJFrame extends javax.swing.JFrame {
             String valor = jTable5.getValueAt(i, 10).toString();
             String resta = jTable5.getValueAt(i, 11).toString();
             valor = valor.replace(".", "").trim();
-//            System.out.println("valor " + valor);
+////            System.out.println("valor " + valor);
             double numero = Double.parseDouble(valor);
             double numeroResta = Double.parseDouble(resta);
             suma = numero + suma - numeroResta;
         }
 
         bd = new BigDecimal(suma);
-//        System.out.println("suma " + bd);
+////        System.out.println("suma " + bd);
         sumaTotal = suma + sumaTotal;
 
         formato = new DecimalFormat("#,###");
         valorFormateado = formato.format(bd);
-//        System.out.println(valorFormateado);
+////        System.out.println(valorFormateado);
 
         String valor5 = valorFormateado;
 
@@ -1189,7 +1211,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         formato = new DecimalFormat("#,###");
         valorFormateado = formato.format(bdT);
-//        System.out.println(valorFormateado);
+////        System.out.println(valorFormateado);
 
         String valor4 = valorFormateado;
 
@@ -1408,14 +1430,14 @@ public class NewJFrame extends javax.swing.JFrame {
 
 //            if (selectedIndex == 0) {
             String toString = jComboBox1.getSelectedItem().toString();
-            System.out.println("" + toString);
+//            System.out.println("" + toString);
 
             String substring = toString.substring(8, 18).trim();
-            System.out.println("substring " + substring);
+//            System.out.println("substring " + substring);
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(substring);
 
             String substring1 = toString.substring(28, 38).trim();
-            System.out.println("substring1 " + substring1);
+//            System.out.println("substring1 " + substring1);
             Date date11 = new SimpleDateFormat("dd/MM/yyyy").parse(substring1);
 
             filter(date1, date11, jTable1);
@@ -1440,14 +1462,14 @@ public class NewJFrame extends javax.swing.JFrame {
         try {
             int selectedIndex = jTabbedPane1.getSelectedIndex();
             String toString = jComboBox1.getSelectedItem().toString();
-            System.out.println("" + toString);
+//            System.out.println("" + toString);
 
             String substring = toString.substring(8, 18).trim();
-            System.out.println("substring " + substring);
+//            System.out.println("substring " + substring);
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(substring);
 
             String substring1 = toString.substring(28, 38).trim();
-            System.out.println("substring1 " + substring1);
+//            System.out.println("substring1 " + substring1);
             Date date11 = new SimpleDateFormat("dd/MM/yyyy").parse(substring1);
 
             filter(date1, date11, jTable1);
@@ -1478,11 +1500,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 String toString = filtro;
                 int selectedIndex = jTabbedPane1.getSelectedIndex();
                 String substring = toString.substring(8, 18).trim();
-                System.out.println("substring " + substring);
+//                System.out.println("substring " + substring);
                 Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(substring);
 
                 String substring1 = toString.substring(28, 38).trim();
-                System.out.println("substring1 " + substring1);
+//                System.out.println("substring1 " + substring1);
                 Date date11 = new SimpleDateFormat("dd/MM/yyyy").parse(substring1);
 
                 filter(date1, date11, jTable1);
@@ -1722,7 +1744,7 @@ public class NewJFrame extends javax.swing.JFrame {
 //                    value = strDate;
 //                    return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 //                } catch (ParseException ex) {
-//                    System.out.println(ex);
+////                    System.out.println(ex);
 //                    return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 //                }
 //            }
@@ -1812,7 +1834,7 @@ public class NewJFrame extends javax.swing.JFrame {
         fileChooser.showOpenDialog(fileChooser);
         try {
             String ruta = fileChooser.getSelectedFile().getAbsolutePath();
-            System.out.println(ruta);
+//            System.out.println(ruta);
             File f = new File(ruta);
 
             CompletableFuture.runAsync(() -> {
@@ -1844,11 +1866,11 @@ public class NewJFrame extends javax.swing.JFrame {
 ////////////////////////////////////////////////////////////////////////////////
                         try {
                             int size = arrCruzeOK.size();
-                            System.out.println(size);
+//                            System.out.println(size);
                             int size1 = arrCruzeBAD.size();
-                            System.out.println(size1);
+//                            System.out.println(size1);
                             int size2 = arrCruzeMuyMALA.size();
-                            System.out.println(size2);
+//                            System.out.println(size2);
 
                             cargarTablas();
                             canFindAllFridaysInRange(jTable1, 1);
@@ -1885,7 +1907,7 @@ public class NewJFrame extends javax.swing.JFrame {
             });
             entrada = new Scanner(f);
             while (entrada.hasNext()) {
-                System.out.println(entrada.nextLine());
+//                System.out.println(entrada.nextLine());
             }
         } catch (FileNotFoundException e) {
             Logger.getLogger(CustomEditor.class.getName()).log(Level.SEVERE, null, e);
@@ -1914,15 +1936,14 @@ public class NewJFrame extends javax.swing.JFrame {
             String contents[] = directoryPath.list();
             String nombre = "";
             for (int i = 0; i < contents.length; i++) {
-                System.out.println(contents[i]);
+//                System.out.println(contents[i]);
                 if (contents[i].contains(".jar")) {
                     nombre = contents[i];
                     break;
                 }
             }
 
-            System.out.println("nombre " + nombre);
-
+//            System.out.println("nombre " + nombre);
             try {
                 byte[] bytes = null;
                 int length = 0;
@@ -1934,14 +1955,14 @@ public class NewJFrame extends javax.swing.JFrame {
                     } catch (Exception ex) {
                         length = 0;
                     }
-                    System.out.println("length " + length);
-                    System.out.println("cont " + cont);
+//                    System.out.println("length " + length);
+//                    System.out.println("cont " + cont);
                     Thread.sleep(1000);
                     cont++;
                 }
 
                 if (length != 0) {
-                    System.out.println("1");
+//                    System.out.println("1");
                     cont = 0;
                     try {
                         Ini ini = new Ini(file);
@@ -1958,7 +1979,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         Logger.getLogger(Calendar.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
-                    System.out.println("2");
+//                    System.out.println("2");
                     cont = 0;
                     try {
                         Ini ini = new Ini(file);
@@ -2095,8 +2116,7 @@ public class NewJFrame extends javax.swing.JFrame {
             arrFechasEmision.clear();
             arrFechasEmision.addAll(hashSet);
 
-            System.out.println(arrFechasEmision);
-
+//            System.out.println(arrFechasEmision);
             ArrayList<String> arrAños = new ArrayList<>();
             arrFechasEmision.stream().forEach((var fechas) -> {
                 String[] split = fechas.split("/");
@@ -2107,8 +2127,7 @@ public class NewJFrame extends javax.swing.JFrame {
             arrAños.clear();
             arrAños.addAll(hashSet);
 
-            System.out.println(arrAños);
-
+//            System.out.println(arrAños);
             ArrayList<ArrayList<String>> arrMesesPorAño = new ArrayList<>();
 
             arrAños.stream().forEach((var año) -> {
@@ -2124,8 +2143,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
             ArrayList<AñoMesSaldo> arrAñoMesSaldo = new ArrayList<>();
             arrMesesPorAño.stream().forEach((ArrayList<String> arrFecha) -> {
-                System.out.println(arrFecha);
-                System.out.println("///////");
+//                System.out.println(arrFecha);
+//                System.out.println("///////");
 
                 arrFecha.stream().forEach((String meses) -> {
                     AñoMesSaldo añoMesSaldo = new AñoMesSaldo();
@@ -2142,14 +2161,14 @@ public class NewJFrame extends javax.swing.JFrame {
                             String saldo = estadistica.getSaldo();
                             String notaCredito = estadistica.getNotaCredito();
 
-//                            System.out.println("saldo " + saldo);
-//                            System.out.println("notaCredito " + notaCredito);
+////                            System.out.println("saldo " + saldo);
+////                            System.out.println("notaCredito " + notaCredito);
                             sumaSaldos = sumaSaldos + Long.valueOf(saldo.replace(".", ""));
                             sumaNotaCredito = sumaNotaCredito + Long.valueOf(notaCredito);
 
                             if (meses.equals("/08/2021")) {
-                                System.out.println("saldo " + saldo);
-                                System.out.println("sumaSaldos " + sumaSaldos);
+//                                System.out.println("saldo " + saldo);
+//                                System.out.println("sumaSaldos " + sumaSaldos);
                             }
 
                             for (int j = 0; j < arrAños.size(); j++) {
@@ -2174,7 +2193,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     añoMesSaldo.setSaldo("" + sumaSaldos);
                     añoMesSaldo.setNotaCredito("" + sumaNotaCredito);
                     arrAñoMesSaldo.add(añoMesSaldo);
-                    System.out.println("---------");
+//                    System.out.println("---------");
                 });
             });
 
@@ -2208,9 +2227,9 @@ public class NewJFrame extends javax.swing.JFrame {
                     String notaCredito = añoMesSaldo.getNotaCredito();
 
                     if (año.equals(get)) {
-                        System.out.println("mes " + mes);
-                        System.out.println("saldo " + saldo);
-                        System.out.println("notaCredito " + notaCredito);
+//                        System.out.println("mes " + mes);
+//                        System.out.println("saldo " + saldo);
+//                        System.out.println("notaCredito " + notaCredito);
 
                         if (mes.equals("01")) {
                             enero = saldo;
@@ -2304,50 +2323,66 @@ public class NewJFrame extends javax.swing.JFrame {
                 saldosPorAño.add(arr);
             }
 
+            ArrayList<Long> arrLong = new ArrayList<>();
+
             for (int i = 0; i < saldosPorAño.size(); i++) {
                 ArrayList<Long> get = saldosPorAño.get(i);
                 String año = arrAños.get(i);
 
+                long suma = 0;
                 for (int j = 0; j < get.size(); j++) {
                     long get1 = get.get(j);
 
                     if (j == 0) {
                         dataset.setValue(get1, año, "Enero");
+                        suma = suma + get1;
                     }
                     if (j == 1) {
                         dataset.setValue(get1, año, "Febrero");
+                        suma = suma + get1;
                     }
                     if (j == 2) {
                         dataset.setValue(get1, año, "Marzo");
+                        suma = suma + get1;
                     }
                     if (j == 3) {
                         dataset.setValue(get1, año, "Abril");
+                        suma = suma + get1;
                     }
                     if (j == 4) {
                         dataset.setValue(get1, año, "Mayo");
+                        suma = suma + get1;
                     }
                     if (j == 5) {
                         dataset.setValue(get1, año, "Junio");
+                        suma = suma + get1;
                     }
                     if (j == 6) {
                         dataset.setValue(get1, año, "Julio");
+                        suma = suma + get1;
                     }
                     if (j == 7) {
                         dataset.setValue(get1, año, "Agosto");
+                        suma = suma + get1;
                     }
                     if (j == 8) {
                         dataset.setValue(get1, año, "Septiembre");
+                        suma = suma + get1;
                     }
                     if (j == 9) {
                         dataset.setValue(get1, año, "Octubre");
+                        suma = suma + get1;
                     }
                     if (j == 10) {
                         dataset.setValue(get1, año, "Noviembre");
+                        suma = suma + get1;
                     }
                     if (j == 11) {
                         dataset.setValue(get1, año, "Diciembre");
+                        suma = suma + get1;
                     }
                 }
+                arrLong.add(suma);
             }
 
             JFreeChart chart = ChartFactory.createBarChart("Saldos Por Mes", "Meses", "Saldos", dataset, PlotOrientation.VERTICAL, rootPaneCheckingEnabled, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
@@ -2357,6 +2392,42 @@ public class NewJFrame extends javax.swing.JFrame {
 
             try {
                 jPanel6.remove(0);
+                jPanel7.removeAll();
+                jPanel7.revalidate();
+                jPanel7.repaint();
+            } catch (Exception ex) {
+
+            }
+
+            jPanel7.setLayout(new GridLayout(1, saldosPorAño.size()));
+//            System.out.println("saldosPorAño " + saldosPorAño.size());
+
+            NumberFormat formatoNumero = NumberFormat.getNumberInstance();
+            formatoNumero.setMaximumFractionDigits(1);
+
+            for (int i = 0; i < saldosPorAño.size(); i++) {
+                Long get = arrLong.get(i);
+                String año = arrAños.get(i);
+                JLabel jl = new JLabel("Año: " + año + " Total: $ " + formatoNumero.format(get));
+                jl.setHorizontalAlignment(JLabel.CENTER);
+                jPanel7.add(jl);
+
+                if (i == 1) {
+                    break;
+                }
+            }
+
+            try {
+                Long get = arrLong.get(0);
+                Long get1 = arrLong.get(1);
+
+                long name = get - get1;
+                long c = (long) ((name / (float) get1) * 100);
+
+//                System.out.println("get " + get + " get1 " + get1 + " name " + name + " c " + c);
+                JLabel jl = new JLabel("Diferencia: " + c + "%");
+                jl.setHorizontalAlignment(JLabel.CENTER);
+                jPanel7.add(jl);
             } catch (Exception ex) {
 
             }
@@ -2470,8 +2541,7 @@ public class NewJFrame extends javax.swing.JFrame {
             arrFechasEmision.clear();
             arrFechasEmision.addAll(hashSet);
 
-            System.out.println(arrFechasEmision);
-
+//            System.out.println(arrFechasEmision);
             ArrayList<String> arrAños = new ArrayList<>();
             arrFechasEmision.stream().forEach((var fechas) -> {
                 String[] split = fechas.split("/");
@@ -2482,8 +2552,7 @@ public class NewJFrame extends javax.swing.JFrame {
             arrAños.clear();
             arrAños.addAll(hashSet);
 
-            System.out.println(arrAños);
-
+//            System.out.println(arrAños);
             ArrayList<ArrayList<String>> arrMesesPorAño = new ArrayList<>();
 
             arrAños.stream().forEach((var año) -> {
@@ -2499,8 +2568,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
             ArrayList<AñoMesSaldo> arrAñoMesSaldo = new ArrayList<>();
             arrMesesPorAño.stream().forEach((ArrayList<String> arrFecha) -> {
-                System.out.println(arrFecha);
-                System.out.println("///////");
+//                System.out.println(arrFecha);
+//                System.out.println("///////");
 
                 arrFecha.stream().forEach((String meses) -> {
                     AñoMesSaldo añoMesSaldo = new AñoMesSaldo();
@@ -2517,9 +2586,8 @@ public class NewJFrame extends javax.swing.JFrame {
                             String saldo = estadistica.getSaldo();
                             String notaCredito = estadistica.getNotaCredito();
 
-                            System.out.println("saldo " + saldo);
-                            System.out.println("notaCredito " + notaCredito);
-
+//                            System.out.println("saldo " + saldo);
+//                            System.out.println("notaCredito " + notaCredito);
                             sumaSaldos = sumaSaldos + Long.valueOf(saldo.replace(".", ""));
                             sumaNotaCredito = sumaNotaCredito + Long.valueOf(notaCredito);
 
@@ -2545,7 +2613,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     añoMesSaldo.setSaldo("" + sumaSaldos);
                     añoMesSaldo.setNotaCredito("" + sumaNotaCredito);
                     arrAñoMesSaldo.add(añoMesSaldo);
-                    System.out.println("---------");
+//                    System.out.println("---------");
                 });
             });
 
@@ -2579,9 +2647,9 @@ public class NewJFrame extends javax.swing.JFrame {
                     String notaCredito = añoMesSaldo.getNotaCredito();
 
                     if (año.equals(get)) {
-                        System.out.println("mes " + mes);
-                        System.out.println("saldo " + saldo);
-                        System.out.println("notaCredito " + notaCredito);
+//                        System.out.println("mes " + mes);
+//                        System.out.println("saldo " + saldo);
+//                        System.out.println("notaCredito " + notaCredito);
 
                         if (mes.equals("01")) {
                             enero = saldo;
@@ -2675,50 +2743,67 @@ public class NewJFrame extends javax.swing.JFrame {
                 saldosPorAño.add(arr);
             }
 
+            ArrayList<Long> arrLong = new ArrayList<>();
+
             for (int i = 0; i < saldosPorAño.size(); i++) {
                 ArrayList<Long> get = saldosPorAño.get(i);
                 String año = arrAños.get(i);
 
+                long suma = 0;
                 for (int j = 0; j < get.size(); j++) {
                     long get1 = get.get(j);
 
                     if (j == 0) {
                         dataset.setValue(get1, año, "Enero");
+                        suma = suma + get1;
                     }
                     if (j == 1) {
                         dataset.setValue(get1, año, "Febrero");
+                        suma = suma + get1;
                     }
                     if (j == 2) {
                         dataset.setValue(get1, año, "Marzo");
+                        suma = suma + get1;
                     }
                     if (j == 3) {
                         dataset.setValue(get1, año, "Abril");
+                        suma = suma + get1;
                     }
                     if (j == 4) {
                         dataset.setValue(get1, año, "Mayo");
+                        suma = suma + get1;
                     }
                     if (j == 5) {
                         dataset.setValue(get1, año, "Junio");
+                        suma = suma + get1;
                     }
                     if (j == 6) {
                         dataset.setValue(get1, año, "Julio");
+                        suma = suma + get1;
                     }
                     if (j == 7) {
                         dataset.setValue(get1, año, "Agosto");
+                        suma = suma + get1;
                     }
                     if (j == 8) {
                         dataset.setValue(get1, año, "Septiembre");
+                        suma = suma + get1;
                     }
                     if (j == 9) {
                         dataset.setValue(get1, año, "Octubre");
+                        suma = suma + get1;
                     }
                     if (j == 10) {
                         dataset.setValue(get1, año, "Noviembre");
+                        suma = suma + get1;
                     }
                     if (j == 11) {
                         dataset.setValue(get1, año, "Diciembre");
+                        suma = suma + get1;
                     }
                 }
+                arrLong.add(suma);
+//                System.out.println("suma " + suma + " año " + año);
             }
 
             JFreeChart chart = ChartFactory.createBarChart("Saldos Por Mes", "Meses", "Saldos", dataset, PlotOrientation.VERTICAL, rootPaneCheckingEnabled, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
@@ -2728,6 +2813,42 @@ public class NewJFrame extends javax.swing.JFrame {
 
             try {
                 jPanel6.remove(0);
+                jPanel7.removeAll();
+                jPanel7.revalidate();
+                jPanel7.repaint();
+            } catch (Exception ex) {
+
+            }
+
+            jPanel7.setLayout(new GridLayout(1, 3));
+//            System.out.println("saldosPorAño " + saldosPorAño.size());
+
+            NumberFormat formatoNumero = NumberFormat.getNumberInstance();
+            formatoNumero.setMaximumFractionDigits(1);
+
+            for (int i = 0; i < saldosPorAño.size(); i++) {
+                Long get = arrLong.get(i);
+                String año = arrAños.get(i);
+                JLabel jl = new JLabel("Año: " + año + " Total: $ " + formatoNumero.format(get));
+                jl.setHorizontalAlignment(JLabel.CENTER);
+                jPanel7.add(jl);
+
+                if (i == 1) {
+                    break;
+                }
+            }
+
+            try {
+                Long get = arrLong.get(0);
+                Long get1 = arrLong.get(1);
+
+                long name = get - get1;
+                long c = (long) ((name / (float) get1) * 100);
+
+//                System.out.println("get " + get + " get1 " + get1 + " name " + name + " c " + c);
+                JLabel jl = new JLabel("Diferencia: " + c + "%");
+                jl.setHorizontalAlignment(JLabel.CENTER);
+                jPanel7.add(jl);
             } catch (Exception ex) {
 
             }
@@ -2738,6 +2859,15 @@ public class NewJFrame extends javax.swing.JFrame {
             jPanel6.validate();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            exportDataToExcelTodo(jTable1, jTable2, jTable3, jTable5, jTable6);
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     public static ArrayList<String> regresaSinDuplicados(ArrayList<String> arr) {
 
@@ -2811,8 +2941,176 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     } //aqui JaSON!
 
+    public void exportDataToExcelTodo(JTable t1, JTable t2, JTable t3, JTable t4, JTable t5) throws IOException {
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de excel", "xls");
+        chooser.setFileFilter(filter);
+        chooser.setDialogTitle("Guardar archivo");
+        chooser.setAcceptAllFileFilterUsed(false);
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            String ruta = chooser.getSelectedFile().toString().concat(".xls");
+            try {
+                File archivoXLS = new File(ruta);
+                if (archivoXLS.exists()) {
+                    archivoXLS.delete();
+                }
+                archivoXLS.createNewFile();
+                Workbook libro = new HSSFWorkbook();
+                FileOutputStream archivo = new FileOutputStream(archivoXLS);
+                Sheet hoja = libro.createSheet("Todo");
+                hoja.setDisplayGridlines(false);
+
+                for (int f = 0; f < t1.getRowCount(); f++) {
+                    Row fila = hoja.createRow(f);
+                    for (int c = 0; c < t1.getColumnCount(); c++) {
+                        Cell celda = fila.createCell(c);
+                        if (f == 0) {
+                            celda.setCellValue(t1.getColumnName(c));
+                        }
+                    }
+                }
+
+                int filaInicio = 1;
+                for (int f = 0; f < t1.getRowCount(); f++) {
+                    Row fila = hoja.createRow(filaInicio);
+                    filaInicio++;
+                    for (int c = 0; c < t1.getColumnCount(); c++) {
+                        Cell celda = fila.createCell(c);
+                        if (t1.getValueAt(f, c) instanceof Double) {
+                            celda.setCellValue(Double.parseDouble(t1.getValueAt(f, c).toString()));
+                        } else if (t1.getValueAt(f, c) instanceof Float) {
+                            celda.setCellValue(Float.parseFloat((String) t1.getValueAt(f, c)));
+                        } else {
+                            try {
+                                String toString = t1.getValueAt(f, c).toString();
+                                DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+                                Date parse = dateFormat.parse(toString);
+
+                                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                String strDate = formatter.format(parse);
+                                celda.setCellValue(strDate);
+                            } catch (Exception ex) {
+                                celda.setCellValue(String.valueOf(t1.getValueAt(f, c)));
+                            }
+                        }
+                    }
+                }
+
+                ///// 2
+                for (int f = 0; f < t2.getRowCount(); f++) {
+                    Row fila = hoja.createRow(filaInicio);
+                    filaInicio++;
+                    for (int c = 0; c < t2.getColumnCount(); c++) {
+                        Cell celda = fila.createCell(c);
+                        if (t2.getValueAt(f, c) instanceof Double) {
+                            celda.setCellValue(Double.parseDouble(t2.getValueAt(f, c).toString()));
+                        } else if (t2.getValueAt(f, c) instanceof Float) {
+                            celda.setCellValue(Float.parseFloat((String) t2.getValueAt(f, c)));
+                        } else {
+                            try {
+                                String toString = t2.getValueAt(f, c).toString();
+                                DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+                                Date parse = dateFormat.parse(toString);
+
+                                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                String strDate = formatter.format(parse);
+                                celda.setCellValue(strDate);
+                            } catch (Exception ex) {
+                                celda.setCellValue(String.valueOf(t2.getValueAt(f, c)));
+                            }
+                        }
+                    }
+                }
+
+                ////
+                for (int f = 0; f < t3.getRowCount(); f++) {
+                    Row fila = hoja.createRow(filaInicio);
+                    filaInicio++;
+                    for (int c = 0; c < t3.getColumnCount(); c++) {
+                        Cell celda = fila.createCell(c);
+                        if (t3.getValueAt(f, c) instanceof Double) {
+                            celda.setCellValue(Double.parseDouble(t3.getValueAt(f, c).toString()));
+                        } else if (t3.getValueAt(f, c) instanceof Float) {
+                            celda.setCellValue(Float.parseFloat((String) t3.getValueAt(f, c)));
+                        } else {
+                            try {
+                                String toString = t3.getValueAt(f, c).toString();
+                                DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+                                Date parse = dateFormat.parse(toString);
+
+                                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                String strDate = formatter.format(parse);
+                                celda.setCellValue(strDate);
+                            } catch (Exception ex) {
+                                celda.setCellValue(String.valueOf(t3.getValueAt(f, c)));
+                            }
+                        }
+                    }
+                }
+
+                /////
+                for (int f = 0; f < t4.getRowCount(); f++) {
+                    Row fila = hoja.createRow(filaInicio);
+                    filaInicio++;
+                    for (int c = 0; c < t4.getColumnCount(); c++) {
+                        Cell celda = fila.createCell(c);
+                        if (t4.getValueAt(f, c) instanceof Double) {
+                            celda.setCellValue(Double.parseDouble(t4.getValueAt(f, c).toString()));
+                        } else if (t4.getValueAt(f, c) instanceof Float) {
+                            celda.setCellValue(Float.parseFloat((String) t4.getValueAt(f, c)));
+                        } else {
+                            try {
+                                String toString = t4.getValueAt(f, c).toString();
+                                DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+                                Date parse = dateFormat.parse(toString);
+
+                                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                String strDate = formatter.format(parse);
+                                celda.setCellValue(strDate);
+                            } catch (Exception ex) {
+                                celda.setCellValue(String.valueOf(t4.getValueAt(f, c)));
+                            }
+                        }
+                    }
+                }
+
+                //////
+                for (int f = 0; f < t5.getRowCount(); f++) {
+                    Row fila = hoja.createRow(filaInicio);
+                    filaInicio++;
+                    for (int c = 0; c < t5.getColumnCount(); c++) {
+                        Cell celda = fila.createCell(c);
+                        if (t5.getValueAt(f, c) instanceof Double) {
+                            celda.setCellValue(Double.parseDouble(t5.getValueAt(f, c).toString()));
+                        } else if (t5.getValueAt(f, c) instanceof Float) {
+                            celda.setCellValue(Float.parseFloat((String) t5.getValueAt(f, c)));
+                        } else {
+                            try {
+                                String toString = t5.getValueAt(f, c).toString();
+                                DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+                                Date parse = dateFormat.parse(toString);
+
+                                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                String strDate = formatter.format(parse);
+                                celda.setCellValue(strDate);
+                            } catch (Exception ex) {
+                                celda.setCellValue(String.valueOf(t5.getValueAt(f, c)));
+                            }
+                        }
+                    }
+                }
+
+                libro.write(archivo);
+                archivo.close();
+                Desktop.getDesktop().open(archivoXLS);
+            } catch (IOException | NumberFormatException e) {
+                throw e;
+            }
+        }
+    } //aqui JaSON!
+
     public static void filter(Date startDate, Date endDate, JTable jTable) {
-        System.out.println("1");
+//        System.out.println("1");
         Instant instant = startDate.toInstant();
         ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
         LocalDate date = zdt.toLocalDate();
@@ -2890,7 +3188,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 String procentaje;
          */
         for (int i = 0; i < arrCruzeOK.size(); ++i) {
-            System.out.println("--------------------------------------------> " + i);
+//            System.out.println("--------------------------------------------> " + i);
             Cruze get = arrCruzeOK.get(i);
 
             fila[0] = get.getPkNumeroCuota();
@@ -2908,7 +3206,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[8] = get.getFechaEmision();
 
             try {
-                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
+//                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(get.getFechaVencimiento());
                 fila[9] = date;
             } catch (Exception ex) {
@@ -2916,7 +3214,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
 
             try {
-                System.out.println(get.getSaldo());
+//                System.out.println(get.getSaldo());
                 double firstNumber = Double.valueOf(get.getSaldo());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -2927,7 +3225,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[11] = String.valueOf(get.getComentarioNotaDeCredito());
 
             try {
-                System.out.println(get.getTotalNCuota());
+//                System.out.println(get.getTotalNCuota());
                 double firstNumber = Double.valueOf(get.getTotalNCuota());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -2938,7 +3236,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[13] = get.getProcentaje();
 
             String comnetario = get.getComnetario();
-            System.out.println("---------------------------------------------> comnetario " + comnetario);
+//            System.out.println("---------------------------------------------> comnetario " + comnetario);
             if (comnetario != null) {
                 fila[14] = comnetario;
             } else {
@@ -2980,7 +3278,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     value = strDate;
                     return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 } catch (ParseException ex) {
-                    System.out.println(ex);
+//                    System.out.println(ex);
                     return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 }
             }
@@ -3081,7 +3379,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 String procentaje;
          */
         for (int i = 0; i < arrCruzeBAD.size(); ++i) {
-            System.out.println("--------------------------------------------> " + i);
+//            System.out.println("--------------------------------------------> " + i);
             Cruze get = arrCruzeBAD.get(i);
 
             fila[0] = get.getPkNumeroCuota();
@@ -3099,7 +3397,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[8] = get.getFechaEmision();
 
             try {
-                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
+//                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(get.getFechaVencimiento());
                 fila[9] = date;
             } catch (Exception ex) {
@@ -3108,7 +3406,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 //            fila[10] = get.getTotal();
             try {
-                System.out.println(get.getSaldo());
+//                System.out.println(get.getSaldo());
                 double firstNumber = Double.valueOf(get.getSaldo());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -3119,7 +3417,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[11] = String.valueOf(get.getComentarioNotaDeCredito());
 
             try {
-                System.out.println(get.getTotalNCuota());
+//                System.out.println(get.getTotalNCuota());
                 double firstNumber = Double.valueOf(get.getTotalNCuota());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -3130,7 +3428,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[13] = get.getProcentaje();
 
             String comnetario = get.getComnetario();
-            System.out.println("---------------------------------------------> comnetario " + comnetario);
+//            System.out.println("---------------------------------------------> comnetario " + comnetario);
             if (comnetario != null) {
                 fila[14] = comnetario;
             } else {
@@ -3266,7 +3564,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 String procentaje;
          */
         for (int i = 0; i < arrCruzeMuyMALA.size(); ++i) {
-            System.out.println("--------------------------------------------> " + i);
+//            System.out.println("--------------------------------------------> " + i);
             Cruze get = arrCruzeMuyMALA.get(i);
 
             fila[0] = get.getPkNumeroCuota();
@@ -3284,7 +3582,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[8] = get.getFechaEmision();
 
             try {
-                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
+//                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(get.getFechaVencimiento());
                 fila[9] = date;
             } catch (Exception ex) {
@@ -3293,7 +3591,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 //            fila[10] = get.getTotal();
             try {
-                System.out.println(get.getSaldo());
+//                System.out.println(get.getSaldo());
                 double firstNumber = Double.valueOf(get.getSaldo());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -3304,7 +3602,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[11] = String.valueOf(get.getComentarioNotaDeCredito());
 
             try {
-                System.out.println(get.getTotalNCuota());
+//                System.out.println(get.getTotalNCuota());
                 double firstNumber = Double.valueOf(get.getTotalNCuota());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -3315,7 +3613,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[13] = get.getProcentaje();
 
             String comnetario = get.getComnetario();
-            System.out.println("---------------------------------------------> comnetario " + comnetario);
+//            System.out.println("---------------------------------------------> comnetario " + comnetario);
             if (comnetario != null) {
                 fila[14] = comnetario;
             } else {
@@ -3439,7 +3737,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 String procentaje;
          */
         for (int i = 0; i < arrOC.size(); ++i) {
-            System.out.println("--------------------------------------------> " + i);
+//            System.out.println("--------------------------------------------> " + i);
             Cruze get = arrOC.get(i);
 
             fila[0] = get.getPkNumeroCuota();
@@ -3457,7 +3755,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[8] = get.getFechaEmision();
 
             try {
-                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
+//                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(get.getFechaVencimiento());
                 fila[9] = date;
             } catch (Exception ex) {
@@ -3466,7 +3764,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 //            fila[10] = get.getTotal();
             try {
-                System.out.println(get.getSaldo());
+//                System.out.println(get.getSaldo());
                 double firstNumber = Double.valueOf(get.getSaldo());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -3477,7 +3775,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[11] = String.valueOf(get.getComentarioNotaDeCredito());
 
             try {
-                System.out.println(get.getTotalNCuota());
+//                System.out.println(get.getTotalNCuota());
                 double firstNumber = Double.valueOf(get.getTotalNCuota());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -3488,7 +3786,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[13] = get.getProcentaje();
 
             String comnetario = get.getComnetario();
-            System.out.println("---------------------------------------------> comnetario " + comnetario);
+//            System.out.println("---------------------------------------------> comnetario " + comnetario);
             if (comnetario != null) {
                 fila[14] = comnetario;
             } else {
@@ -3612,7 +3910,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 String procentaje;
          */
         for (int i = 0; i < arrSinCruzar.size(); ++i) {
-            System.out.println("--------------------------------------------> " + i);
+//            System.out.println("--------------------------------------------> " + i);
             Cruze get = arrSinCruzar.get(i);
 
             fila[0] = get.getPkNumeroCuota();
@@ -3630,7 +3928,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[8] = get.getFechaEmision();
 
             try {
-                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
+//                System.out.println("get.getFechaVencimiento() " + get.getFechaVencimiento());
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(get.getFechaVencimiento());
                 fila[9] = date;
             } catch (Exception ex) {
@@ -3638,7 +3936,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
 
             try {
-                System.out.println(get.getSaldo());
+//                System.out.println(get.getSaldo());
                 double firstNumber = Double.valueOf(get.getSaldo());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -3649,7 +3947,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[11] = String.valueOf(get.getComentarioNotaDeCredito());
 
             try {
-                System.out.println(get.getTotalNCuota());
+//                System.out.println(get.getTotalNCuota());
                 double firstNumber = Double.valueOf(get.getTotalNCuota());
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
                 String firstNumberAsString = decimalFormat.format(firstNumber);
@@ -3660,7 +3958,7 @@ public class NewJFrame extends javax.swing.JFrame {
             fila[13] = get.getProcentaje();
 
             String comnetario = get.getComnetario();
-            System.out.println("---------------------------------------------> comnetario " + comnetario);
+//            System.out.println("---------------------------------------------> comnetario " + comnetario);
             if (comnetario != null) {
                 fila[14] = comnetario;
             } else {
@@ -3702,7 +4000,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     value = strDate;
                     return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 } catch (ParseException ex) {
-                    System.out.println(ex);
+//                    System.out.println(ex);
                     return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 }
             }
@@ -3785,6 +4083,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
@@ -3792,6 +4091,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     public static javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3816,20 +4116,20 @@ class Editor_CheckBox extends AbstractCellEditor implements TableCellEditor, Act
     private final JCheckBox jCheckBox;
 
     public Editor_CheckBox() {
-//        System.out.println("Editor" + " -> " + "public Editor_CheckBox()");
+////        System.out.println("Editor" + " -> " + "public Editor_CheckBox()");
         jCheckBox = new JCheckBox();
         jCheckBox.addActionListener(this);
     }
 
     @Override
     public Object getCellEditorValue() {
-//        System.out.println("Editor" + " -> " + "public Object getCellEditorValue()");
+////        System.out.println("Editor" + " -> " + "public Object getCellEditorValue()");
         return jCheckBox.isSelected();
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-//        System.out.println("Editor" + " -> " + " public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)");
+////        System.out.println("Editor" + " -> " + " public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)");
         jCheckBox.setHorizontalAlignment(CENTER);
         boolean b = (Boolean) value;
         jCheckBox.setSelected(b);
@@ -3842,9 +4142,9 @@ class Editor_CheckBox extends AbstractCellEditor implements TableCellEditor, Act
         String fechas = jTable4.getValueAt(selectedRow, 0).toString();
         String comentario = jTable4.getValueAt(selectedRow, 7).toString();
         boolean selected = jCheckBox.isSelected();
-        System.out.println("fechas " + fechas);
-        System.out.println("selected " + selected);
-        System.out.println("comentario " + comentario);
+//        System.out.println("fechas " + fechas);
+//        System.out.println("selected " + selected);
+//        System.out.println("comentario " + comentario);
         int num = 999999999;
 
         if (selected) {
@@ -3855,8 +4155,7 @@ class Editor_CheckBox extends AbstractCellEditor implements TableCellEditor, Act
             num = 1;
         }
 
-        System.out.println("num " + num);
-
+//        System.out.println("num " + num);
         Totales totales = new Totales();
         totales.setFechas(fechas);
         totales.setSelected(num);
@@ -3872,6 +4171,7 @@ class Editor_CheckBox extends AbstractCellEditor implements TableCellEditor, Act
                 System.out.println("ex1 " + ex1);
                 Logger.getLogger(Editor_CheckBox.class.getName()).log(Level.SEVERE, null, ex1);
             } catch (SQLException ex1) {
+                System.out.println("ex1 " + ex1);
                 Exceptions.printStackTrace(ex1);
             }
         }
@@ -3888,12 +4188,12 @@ class Render_CheckBox extends JCheckBox implements TableCellRenderer {
     private final JCheckBox jCheckBox = new JCheckBox();
 
     public Render_CheckBox() {
-//        System.out.println("Render" + " -> " + "public Render_CheckBox()");
+////        System.out.println("Render" + " -> " + "public Render_CheckBox()");
         setOpaque(true);
     }
 
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-//        System.out.println("Render" + " -> " + "public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)");
+////        System.out.println("Render" + " -> " + "public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)");
         jCheckBox.setHorizontalAlignment(CENTER);
         boolean b = (Boolean) value;
         jCheckBox.setSelected(b);
@@ -4011,12 +4311,12 @@ class CustomEditor extends AbstractCellEditor implements TableCellEditor, Action
 
     @Override
     public void focusGained(FocusEvent e) {
-        System.out.println("gain");
+//        System.out.println("gain");
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-        System.out.println("lost");
+//        System.out.println("lost");
         jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
         jTable2.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
         jTable3.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -4032,10 +4332,9 @@ class CustomEditor extends AbstractCellEditor implements TableCellEditor, Action
                 String fechas = jTable4.getValueAt(selectedRow, 0).toString();
                 String selected = jTable4.getValueAt(selectedRow, 6).toString();
 
-                System.out.println("fechas " + fechas);
-                System.out.println("selected " + selected);
-                System.out.println("comentario " + comentario);
-
+//                System.out.println("fechas " + fechas);
+//                System.out.println("selected " + selected);
+//                System.out.println("comentario " + comentario);
                 Totales totales = new Totales();
                 totales.setFechas(fechas);
                 if ("true".equals(selected)) {
@@ -4050,8 +4349,10 @@ class CustomEditor extends AbstractCellEditor implements TableCellEditor, Action
                     try {
                         TotalesDAO.actualizaComentario(totales, "ingresos");
                     } catch (IOException ex1) {
+                        System.out.println("ex1 " + ex1);
                         Exceptions.printStackTrace(ex1);
                     } catch (SQLException ex1) {
+                        System.out.println("ex1 " + ex1);
                         Exceptions.printStackTrace(ex1);
                     }
                 }
@@ -4060,14 +4361,14 @@ class CustomEditor extends AbstractCellEditor implements TableCellEditor, Action
                 if (selectedColumnx == 11) {
                     try {
                         String text = textArea.getText();
-                        System.out.println("text " + text);
+//                        System.out.println("text " + text);
                         int selectedRow = jTableEditor.getSelectedRow();
                         int selectedColumn = jTableEditor.getSelectedColumn();
-                        System.out.println(selectedRow + " " + selectedColumn);
+//                        System.out.println(selectedRow + " " + selectedColumn);
                         String toString = jTableEditor.getValueAt(selectedRow, 11).toString();
-                        System.out.println("toString " + toString);
+//                        System.out.println("toString " + toString);
                         String toString1 = jTableEditor.getValueAt(selectedRow, 0).toString();
-                        System.out.println("toString1 " + toString1);
+//                        System.out.println("toString1 " + toString1);
 
                         boolean actualizaComentarioNotaDeCredito = DocumentoCobranzaDAO.actualizaComentarioNotaDeCredito(text, toString1, "ingresos");
                         if (actualizaComentarioNotaDeCredito == true) {
@@ -4079,21 +4380,21 @@ class CustomEditor extends AbstractCellEditor implements TableCellEditor, Action
 
                         suma();
                     } catch (Exception ex) {
-                        System.out.println("ex " + ex);
+//                        System.out.println("ex " + ex);
                     }
                 } else {
                     try {
                         String text = textArea.getText();
-                        System.out.println("text " + text);
+//                        System.out.println("text " + text);
                         int selectedRow = jTableEditor.getSelectedRow();
                         int selectedColumn = jTableEditor.getSelectedColumn();
-                        System.out.println(selectedRow + " " + selectedColumn);
+//                        System.out.println(selectedRow + " " + selectedColumn);
                         /*
                         String toString = jTableEditor.getValueAt(selectedRow, 14).toString();
-                        System.out.println("toString " + toString);
+//                        System.out.println("toString " + toString);
                          */
                         String toString1 = jTableEditor.getValueAt(selectedRow, 0).toString();
-                        System.out.println("toString1 " + toString1);
+//                        System.out.println("toString1 " + toString1);
 
                         DocumentoCobranzaDAO.actualizaComentarioDocumentoCobranza(text, toString1, "ingresos");
                         JOptionPane.showMessageDialog(null, "Comentario Guardado");
@@ -4210,7 +4511,7 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
 
     @Override
     public void focusLost(FocusEvent e) {
-        System.out.println("lost");
+//        System.out.println("lost");
         jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
         jTable2.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
         jTable3.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -4234,10 +4535,10 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                         } catch (Exception ex) {
                             selectedRow = selectedRow0;
                         }
-                        System.out.println("1");
-                        System.out.println("selectedRow " + selectedRow);
+//                        System.out.println("1");
+//                        System.out.println("selectedRow " + selectedRow);
                         String pk = jTable1.getModel().getValueAt(selectedRow, 0).toString();
-                        System.out.println("toString1 " + pk);
+//                        System.out.println("toString1 " + pk);
                         DocumentoCobranzaDAO.actualizaEstadoDocumentoCobranza("MALO", pk, "ingresos");
                         String toString0;
                         String toString1;
@@ -4353,7 +4654,7 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                         } catch (Exception ex) {
                             fila[9] = "";
                         }
-                        System.out.println("-----------> toString10 " + toString10);
+//                        System.out.println("-----------> toString10 " + toString10);
                         fila[10] = toString10;
                         fila[11] = toString11;
                         fila[12] = toString12;
@@ -4373,7 +4674,7 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                     }
                     case 1: {
                         int selectedColumn = jTable2.getSelectedColumn();
-                        System.out.println("selectedColumn " + selectedColumn);
+//                        System.out.println("selectedColumn " + selectedColumn);
 
                         switch (selectedColumn) {
                             case 15: {
@@ -4384,12 +4685,12 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                                 } catch (Exception ex) {
                                     selectedRow = selectedRow0;
                                 }
-                                System.out.println("2");
-                                System.out.println("selectedRow " + selectedRow);
+//                                System.out.println("2");
+//                                System.out.println("selectedRow " + selectedRow);
                                 String pre = jTable2.getModel().getValueAt(selectedRow, 0).toString();
                                 String pre1 = jTable2.getModel().getValueAt(selectedRow, 1).toString();
-                                System.out.println("toString1 " + pre);
-                                System.out.println("pre1 " + pre1);
+//                                System.out.println("toString1 " + pre);
+//                                System.out.println("pre1 " + pre1);
                                 DocumentoCobranzaDAO.actualizaEstadoDocumentoCobranza("BUENO", pre, "ingresos");
                                 String toString0;
                                 String toString1;
@@ -4527,12 +4828,12 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                                 } catch (Exception ex) {
                                     selectedRow = selectedRow0;
                                 }
-                                System.out.println("2");
-                                System.out.println("selectedRow " + selectedRow);
+//                                System.out.println("2");
+//                                System.out.println("selectedRow " + selectedRow);
                                 String pre = jTable2.getModel().getValueAt(selectedRow, 0).toString();
                                 String pre1 = jTable2.getModel().getValueAt(selectedRow, 1).toString();
-                                System.out.println("toString1 " + pre);
-                                System.out.println("pre1 " + pre1);
+//                                System.out.println("toString1 " + pre);
+//                                System.out.println("pre1 " + pre1);
                                 DocumentoCobranzaDAO.actualizaEstadoDocumentoCobranza("MUYMALO", pre, "ingresos");
                                 String toString0;
                                 String toString1;
@@ -4674,12 +4975,12 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                                 } catch (Exception ex) {
                                     selectedRow = selectedRow0;
                                 }
-                                System.out.println("2");
-                                System.out.println("selectedRow " + selectedRow);
+//                                System.out.println("2");
+//                                System.out.println("selectedRow " + selectedRow);
                                 String pre = jTable2.getModel().getValueAt(selectedRow, 0).toString();
                                 String pre1 = jTable2.getModel().getValueAt(selectedRow, 1).toString();
-                                System.out.println("toString1 " + pre);
-                                System.out.println("pre1 " + pre1);
+//                                System.out.println("toString1 " + pre);
+//                                System.out.println("pre1 " + pre1);
                                 DocumentoCobranzaDAO.actualizaEstadoDocumentoCobranza("OC", pre, "ingresos");
                                 String toString0;
                                 String toString1;
@@ -4826,10 +5127,10 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                                     selectedRow = selectedRow0;
                                 }
 
-                                System.out.println("1");
-                                System.out.println("selectedRow " + selectedRow);
+//                                System.out.println("1");
+//                                System.out.println("selectedRow " + selectedRow);
                                 String pre = jTable3.getModel().getValueAt(selectedRow, 0).toString();
-                                System.out.println("toString1 " + pre);
+//                                System.out.println("toString1 " + pre);
                                 DocumentoCobranzaDAO.actualizaEstadoDocumentoCobranza("BUENO", pre, "ingresos");
                                 String toString0;
                                 String toString1;
@@ -4968,10 +5269,10 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                                     selectedRow = selectedRow0;
                                 }
 
-                                System.out.println("1");
-                                System.out.println("selectedRow " + selectedRow);
+//                                System.out.println("1");
+//                                System.out.println("selectedRow " + selectedRow);
                                 String pre = jTable3.getModel().getValueAt(selectedRow, 0).toString();
-                                System.out.println("toString1 " + pre);
+//                                System.out.println("toString1 " + pre);
                                 DocumentoCobranzaDAO.actualizaEstadoDocumentoCobranza("OC", pre, "ingresos");
                                 String toString0;
                                 String toString1;
@@ -5108,7 +5409,7 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                     }
                     case 3: {
                         int selectedColumn = jTable5.getSelectedColumn();
-                        System.out.println("selectedColumn " + selectedColumn);
+//                        System.out.println("selectedColumn " + selectedColumn);
 
                         switch (selectedColumn) {
                             case 15: {
@@ -5119,12 +5420,12 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                                 } catch (Exception ex) {
                                     selectedRow = selectedRow0;
                                 }
-                                System.out.println("2");
-                                System.out.println("selectedRow " + selectedRow);
+//                                System.out.println("2");
+//                                System.out.println("selectedRow " + selectedRow);
                                 String pre = jTable5.getModel().getValueAt(selectedRow, 0).toString();
                                 String pre1 = jTable5.getModel().getValueAt(selectedRow, 1).toString();
-                                System.out.println("toString1 " + pre);
-                                System.out.println("pre1 " + pre1);
+//                                System.out.println("toString1 " + pre);
+//                                System.out.println("pre1 " + pre1);
                                 DocumentoCobranzaDAO.actualizaEstadoDocumentoCobranza("BUENO", pre, "ingresos");
                                 String toString0;
                                 String toString1;
@@ -5263,12 +5564,12 @@ class CustomEditor1 extends AbstractCellEditor implements TableCellEditor, Actio
                                     selectedRow = selectedRow0;
                                 }
 
-                                System.out.println("2");
-                                System.out.println("selectedRow " + selectedRow);
+//                                System.out.println("2");
+//                                System.out.println("selectedRow " + selectedRow);
                                 String pre = jTable5.getModel().getValueAt(selectedRow, 0).toString();
                                 String pre1 = jTable5.getModel().getValueAt(selectedRow, 1).toString();
-                                System.out.println("toString1 " + pre);
-                                System.out.println("pre1 " + pre1);
+//                                System.out.println("toString1 " + pre);
+//                                System.out.println("pre1 " + pre1);
                                 DocumentoCobranzaDAO.actualizaEstadoDocumentoCobranza("MUYMALO", pre, "ingresos");
                                 String toString0;
                                 String toString1;
@@ -5538,7 +5839,7 @@ class IntComparatorFecha1 implements Comparator {
             parse = dateFormat.parse(valueOf);
         } catch (ParseException ex) {
             Exceptions.printStackTrace(ex);
-            System.out.println("ex " + ex);
+//            System.out.println("ex " + ex);
         }
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String strDate = formatter.format(parse);
@@ -5554,7 +5855,7 @@ class IntComparatorFecha1 implements Comparator {
             parse1 = dateFormat1.parse(valueOf1);
         } catch (ParseException ex) {
             Exceptions.printStackTrace(ex);
-            System.out.println("ex " + ex);
+//            System.out.println("ex " + ex);
         }
         SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
         String strDate1 = formatter1.format(parse1);

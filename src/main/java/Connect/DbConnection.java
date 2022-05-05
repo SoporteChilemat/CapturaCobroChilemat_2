@@ -26,13 +26,13 @@ public class DbConnection {
             connection = ds.getConnection();
 
             if (connection != null) {
-//                System.out.println("Conexión a base de datos " + bd + " OK\n");
+////                System.out.println("Conexión a base de datos " + bd + " OK\n");
             }
         } catch (SQLException e) {
-            System.out.println(e);
+//            System.out.println(e);
             JOptionPane.showMessageDialog(null, e.toString(), "Error", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-            System.out.println(e);
+//            System.out.println(e);
             JOptionPane.showMessageDialog(null, e.toString(), "Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }
